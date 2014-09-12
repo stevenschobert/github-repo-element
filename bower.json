@@ -1,0 +1,33 @@
+{
+  "name": "github-repo-element",
+  "version": "0.0.0",
+  "homepage": "https://github.com/stevenschobert/github-repo-element",
+  "authors": [
+    "Steven Schobert <spschobert@gmail.com>"
+  ],
+  "description": "A custom HTML element for displaying Github repository information.",
+  "main": "dist/github-element.js",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "web",
+    "component",
+    "github",
+    "skatejs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "skatejs": "~0.9.2",
+    "template-html": "skatejs/template-html"
+  }
+}

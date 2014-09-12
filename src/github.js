@@ -16,7 +16,11 @@ Github.prototype.repo = function getRepo(repo, callback) {
   var url = this.baseUrl+'/repos/'+repo;
 
   this._requestOrReadCache(url, function(data) {
-    var repo = new Github.Repository({
+    if (!data) {
+      throw new Error('No repository found for '+repo+' !');
+    }
+
+    return callback(new Github.Repository({
       name: data.name,
       fullName: data.full_name,
       forks: data.forks_count,
@@ -24,9 +28,7 @@ Github.prototype.repo = function getRepo(repo, callback) {
       url: data.html_url,
       stars: data.stargazers_count,
       language: data.language
-    });
-
-    return callback(repo);
+    }));
   });
 
   return this;

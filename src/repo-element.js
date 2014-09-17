@@ -4,21 +4,20 @@
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // amd
-    define(['skate', 'template-html'], factory);
+    define(['skate'], factory);
   } else if (typeof exports === 'object') {
     // commonjs
-    module.exports = factory(require('skate'), require('template-html'));
+    module.exports = factory(require('skate'));
   } else {
     // browser
     root.GithubRepoElement = factory(root.skate, root.skateTemplateHtml);
   }
-}(this, function (skate, skateTemplateHtml) {
+}(this, function (skate) {
   /**
-   * Github-repo element requires both skatejs and skate.js templating.
-   * Either include them yourself, or use a the bundled version of Github-repo.
+   * Github-repo element requires Skate.js to run. Either include it yourself,
+   * or use the bundled version of Github-repo.
    *
    *  - https://github.com/skatejs/skatejs
-   *  - https://github.com/skatejs/template-html
    */
   if (typeof skate !== 'function') {
     throw new Error([
@@ -28,42 +27,32 @@
     ].join(' '));
   }
 
-  if (typeof skateTemplateHtml !== 'function') {
-    throw new Error([
-      'Github-repo-element requires Skate.js Templating! Make sure you either include',
-      'it in on your page, or use the bundled version. See',
-      'https://github.com/stevenschobert/github-repo-element#installing'
-    ].join(' '));
-  }
-
   var template = [
     '<a class="ghrepo-title" data-ghrepo="url">',
-      '<content select=".url">',
-        '<div data-ghrepo="fullName"></div>',
-      '</content>',
+      '<div data-ghrepo="fullName"></div>',
     '</a>',
     '<div class="ghrepo-description">',
-      '<content select=".description">',
-        '<div data-ghrepo="description"></div>',
-      '</content>',
+      '<div data-ghrepo="description"></div>',
     '</div>',
     '<div class="ghrepo-meta">',
-      '<content select=".meta">',
-        '<span class="ghrepo-stars">',
-          '<span data-ghrepo="stars"></span> stars',
-        '</span>',
-        '&nbsp;&dash;&nbsp;',
-        '<span class="ghrepo-forks">',
-          '<span data-ghrepo="forks"></span> forks',
-        '</span>',
-      '</content>',
+      '<span class="ghrepo-stars">',
+        '<span data-ghrepo="stars"></span> stars',
+      '</span>',
+      '&nbsp;&dash;&nbsp;',
+      '<span class="ghrepo-forks">',
+        '<span data-ghrepo="forks"></span> forks',
+      '</span>',
     '</div>'
   ].join('');
 
   var gh = new Github();
 
   var GithubRepoElement = skate('github-repo', {
-    template: skateTemplateHtml(template),
+    template: function createTemplate(element) {
+      if (element.innerHTML.replace(/\s/, '').length === 0) {
+        element.innerHTML = template;
+      }
+    },
 
     attributes: {
       src: function fetchRepo(element, change) {
@@ -90,7 +79,6 @@
           'stars'
         ].forEach(function displayItem(item) {
           var el = this.querySelector('[data-ghrepo="'+item+'"]');
-          console.log(el.tagName);
           if (el) {
             el.innerHTML = repo[item];
           }

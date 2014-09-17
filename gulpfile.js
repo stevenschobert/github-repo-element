@@ -33,8 +33,7 @@ gulp.task('standalone', function() {
 
 gulp.task('bundled', function() {
   gulp.src([
-      './bower_components/skatejs/dist/skate.js',
-      './bower_components/template-html/dist/skate-template-html.js',
+      './bower_components/skatejs/dist/skate.js'
     ].concat(files))
     .pipe(stripDebug())
     .pipe(concat('github-element-bundled.js'))

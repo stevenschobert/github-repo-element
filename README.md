@@ -6,9 +6,7 @@
 A custom HTML element for displaying GitHub repositories.
 
 ```html
-<github-repo src="OWNER/REPO">
-  loading...
-</github-repo>
+<github-repo src="OWNER/REPO"></github-repo>
 ```
 
 #### Fun bits
@@ -31,11 +29,10 @@ A custom HTML element for displaying GitHub repositories.
 ## Installing
 
 This package is available in two distributions. The **bundled** version includes
-[Skate.js](https://github.com/skatejs/skatejs) &
-[Skate.js Template](https://github.com/skatejs/template-html), while the **stand-alone** assumes you
-will include them yourself. Note you only need *one* of the version.
+[Skate.js](https://github.com/skatejs/skatejs), while the **stand-alone** assumes you
+will include that yourself. Note you only need *one* of the version.
 
-- **[Bundled](dist/github-element-bundled.js)** (includes depencies) _~17kb_
+- **[Bundled](dist/github-element-bundled.js)** (includes depencies) _~12kb_
 - **[Stand-alone](dist/github-element.js)** (no dependencies bundled) _~4kb_
 
 To install the `<github-repo>` element, include the script(s) on your page:
@@ -48,7 +45,6 @@ To install the `<github-repo>` element, include the script(s) on your page:
 
 <!-- If you downloaded the stand-alone version, also include Skate.js -->
 <script src="/path/to/skate.min.js"></script>
-<script src="/path/to/skate-template-html.js"></script>
 <script src="/path/to/github-element.js"></script>
 ```
 
@@ -71,9 +67,7 @@ To set which repository the element looks at, just the `src` attribute. Use the 
 `OWNER/REPO`.
 
 ```html
-<github-repo src="stevenschobert/github-repo-element">
-  text here will be displayed while the element is loading
-</github-repo>
+<github-repo src="stevenschobert/github-repo-element"></github-repo>
 ```
 
 ### Styling
@@ -108,4 +102,3 @@ lend a hand!
 
 - Tests
 - More data from GitHub
-

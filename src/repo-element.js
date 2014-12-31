@@ -28,21 +28,20 @@
   }
 
   var template = [
-    '<a class="ghrepo-title" data-ghrepo="url">',
-      '<div data-ghrepo="fullName"></div>',
-    '</a>',
-    '<div class="ghrepo-description">',
-      '<div data-ghrepo="description"></div>',
-    '</div>',
-    '<div class="ghrepo-meta">',
-      '<span class="ghrepo-stars">',
-        '<span data-ghrepo="stars"></span> stars',
-      '</span>',
-      '&nbsp;&dash;&nbsp;',
-      '<span class="ghrepo-forks">',
-        '<span data-ghrepo="forks"></span> forks',
-      '</span>',
-    '</div>'
+    '<a class="ghrepo" data-ghrepo="url">',
+      '<div class="ghrepo-title" data-ghrepo="fullName"></div>',
+      '<div class="ghrepo-description">',
+        '<div data-ghrepo="description"></div>',
+      '</div>',
+      '<div class="ghrepo-meta">',
+        '<span class="ghrepo-stars">',
+          '<span data-ghrepo="stars"></span> stars',
+        '</span>',
+        '<span class="ghrepo-forks">',
+          '<span data-ghrepo="forks"></span> forks',
+        '</span>',
+      '</div>',
+    '</a>'
   ].join('');
 
   var gh = new Github();

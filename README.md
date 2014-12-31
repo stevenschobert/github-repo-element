@@ -75,7 +75,7 @@ To set which repository the element looks at, just the `src` attribute. Use the 
 To style the `<github-repo>`'s contents, use the following CSS selectors.
 
 ```css
-/* Repository title (link) */
+/* Repository title */
 github-repo .ghrepo-title {
 }
 
@@ -84,11 +84,7 @@ github-repo .ghrepo-description {
 }
 
 /* Repository stars and forks */
-.ghrepo-meta {
-  margin-top: 8px;
-  font-size: 85%;
-  font-style: italic;
-  color: #888;
+github-repo .ghrepo-meta {
 }
 ```
 
